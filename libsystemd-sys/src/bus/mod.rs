@@ -106,6 +106,7 @@ extern "C" {
     pub fn sd_bus_open_system(ret: *mut *mut sd_bus) -> c_int;
     pub fn sd_bus_open_system_remote(ret: *mut *mut sd_bus, host: *const c_char) -> c_int;
     pub fn sd_bus_open_system_machine(ret: *mut *mut sd_bus, host: *const c_char) -> c_int;
+    pub fn sd_bus_open_user_machine(ret: *mut *mut sd_bus, host: *const c_char) -> c_int;
 
     pub fn sd_bus_new(ret: *mut *mut sd_bus) -> c_int;
 

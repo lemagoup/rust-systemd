@@ -876,6 +876,13 @@ impl Bus {
     }
 
     #[inline]
+    pub fn open_user_machine(host: &Utf8CStr) -> crate::Result<Bus> {
+        let mut b = MaybeUninit::uninit();
+        sd_try!(ffi::bus::sd_bus_open_user_machine(b.as_mut_ptr(), host.as_ptr()));
+        Ok(unsafe { Bus::from_ptr(b.assume_init()) })
+    }
+
+    #[inline]
     pub fn default_system() -> super::Result<Bus> {
         let mut b = MaybeUninit::uninit();
         sd_try!(ffi::bus::sd_bus_default_system(b.as_mut_ptr()));
